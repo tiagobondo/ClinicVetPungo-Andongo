@@ -47,7 +47,6 @@ public class App {
         System.out.println("Escolha apenas numeros!");
         teclado.nextLine();
       }
-
     }
   }
 }

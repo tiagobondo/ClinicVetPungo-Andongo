@@ -1,4 +1,4 @@
-import java.time.Year;
+import java.time.LocalDate;
 
 public class Animal {
   private String nome;
@@ -8,8 +8,8 @@ public class Animal {
   private String id_animal;
   public static int contador = 1;
   // Trazendo o ano do sistema
-  Year anoActual = Year.now();
-  // int anoA = Integer.parseInt(anoActual);
+  LocalDate ano = LocalDate.now();
+  int anoActual = ano.getYear();
 
   // Metódo de acesso GET ao nome do animal
   public String getNome() {
@@ -43,7 +43,7 @@ public class Animal {
 
   // Metódo de acesso GET idade
   public int getIdade() {
-    int idade = 2025 - anoNasc;
+    int idade = anoActual - anoNasc;
     return idade;
   }
 
