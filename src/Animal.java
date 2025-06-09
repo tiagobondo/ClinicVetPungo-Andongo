@@ -1,4 +1,4 @@
-//import java.util;
+import java.time.Year;
 
 public class Animal {
   private String nome;
@@ -7,6 +7,9 @@ public class Animal {
   private int anoNasc;
   private String id_animal;
   public static int contador = 1;
+  // Trazendo o ano do sistema
+  Year anoActual = Year.now();
+  // int anoA = Integer.parseInt(anoActual);
 
   // Metódo de acesso GET ao nome do animal
   public String getNome() {
