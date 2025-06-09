@@ -45,7 +45,7 @@ public class Animal {
   }
 
   // Metódo de acesso SET a idade
-  public void setIdade(int anoNasc) {
+  public void setAnoNasc(int anoNasc) {
     this.anoNasc = anoNasc;
   }
 

@@ -8,7 +8,7 @@ public class App {
     Scanner teclado = new Scanner(System.in);
     int op;
     boolean estado = true;
-    //Opções de escolhas
+    // Opções de escolhas
     System.out.println("ESCOLHA UMA DAS OPÇÕES");
     System.out.println("1 - Registar proprietário");
     System.out.println("2 - Registar animal");
