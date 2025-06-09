@@ -6,25 +6,43 @@ import java.util.ArrayList;
 
 public class App {
 
-  // Função Registar proprietário
-  public static void registarProprietario(Scanner teclado) {
-    // Declaração do arrayList
-    ArrayList<Propretario> proprietarios = new ArrayList<Propretario>();
-    Propretario proprietario = new Propretario(); // Variavel auxiliar
+  // Função Registar proprietário Recebendo params(teclado, proprietarios)
+  public static void registarProprietario(Scanner teclado, ArrayList<Propretario> proprietarios) {
 
-    System.out.print("Nome do proprietário: ");
-    String nome = teclado.nextLine();
-    proprietario.setNome(nome);
+    while (true) {
+      Propretario proprietario = new Propretario(); // Variavel auxiliar
 
-    System.out.print("Numero de telefone: ");
-    int contacto = teclado.nextInt();
-    proprietario.setContacto(contacto);
+      System.out.print("Nome do proprietário: ");
+      String nome = teclado.nextLine();
+      proprietario.setNome(nome);
 
-    // Adicionar todas as pessoas no ArrayList
-    proprietarios.add(proprietario);
+      System.out.print("Numero de telefone: ");
+      int contacto = teclado.nextInt();
+      proprietario.setContacto(contacto);
+
+      // Gerando o Id do proprietário
+      proprietario.setId_proprietario();
+
+      // Adicionar todas as pessoas no ArrayList
+      proprietarios.add(proprietario);
+      break;
+    }
+
+    /*
+     * for (Propretario propretario : proprietarios) {
+     * System.out.println(propretario.getNome());
+     * System.out.println(propretario.getContacto());
+     * System.out.println(propretario.getIdProprietario());
+     * }
+     */
+
+    // System.out.print("SIZE " + proprietarios.size());
+
   }
 
   public static void main(String[] args) {
+    // Declaração do arrayList
+    ArrayList<Propretario> proprietarios = new ArrayList<Propretario>();
     Scanner teclado = new Scanner(System.in);
     int op;
     boolean estado = true;
@@ -49,7 +67,7 @@ public class App {
         switch (op) {
           case 1:
             teclado.nextLine();// Limpando o buffer do teclado
-            registarProprietario(teclado);
+            registarProprietario(teclado, proprietarios);
             break;
           case 2:
             break;
