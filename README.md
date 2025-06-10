@@ -1,2 +1,2 @@
 # ClinicVetPungo-Andongo
-Projecto desenolvido em java como trabalho colectivo na Universidade Agostinho Neto UAN
+Projecto desenvolvido em java como trabalho colectivo da Universidade Agostinho Neto UAN na unidade curricular de Fundamentos de Programação
