@@ -55,7 +55,7 @@ public class Visita {
   }
 
   // Metódo de acesso GET ao id da visita gerado de forma dinâmica
-  public String getVisita() {
+  public String getIdVisita() {
     return id_visita;
   }
 
