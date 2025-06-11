@@ -29,6 +29,7 @@ public class App {
     }
 
     /*
+     * System.out.format("DADOS\n");
      * for (Propretario propretario : proprietarios) {
      * System.out.println(propretario.getNome());
      * System.out.println(propretario.getContacto());
