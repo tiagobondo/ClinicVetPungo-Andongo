@@ -8,7 +8,7 @@ public class Visita {
   public static int contador = 1;
 
   public String getTipoVisita() {
-    return tipo_visita;
+    return tipo_visita.toUpperCase();
   }
 
   // Metódo de acesso SET ao tipo de viista
@@ -18,7 +18,7 @@ public class Visita {
 
   // Metódo de acesso GET ao observacao
   public String getObservacao() {
-    return observacao;
+    return observacao.toUpperCase();
   }
 
   // Metódo de acesso SET ao observacao
@@ -38,7 +38,7 @@ public class Visita {
 
   // Metódo de acesso GET ao nome do veterinario
   public String getNome_veterinario() {
-    return nome_veterinario;
+    return nome_veterinario.toUpperCase();
   }
 
   // Metódo de acesso SET ao nome do veterinario
@@ -56,7 +56,7 @@ public class Visita {
 
   // Metódo de acesso GET ao id da visita gerado de forma dinâmica
   public String getIdVisita() {
-    return id_visita;
+    return id_visita.toUpperCase();
   }
 
 }

@@ -13,7 +13,7 @@ public class Animal {
 
   // Metódo de acesso GET ao nome do animal
   public String getNome() {
-    return nome;
+    return nome.toUpperCase();
   }
 
   // Metódo de acesso SET ao nome do animal
@@ -23,7 +23,7 @@ public class Animal {
 
   // Metódo de acesso GET a especie
   public String getEspecie() {
-    return especie;
+    return especie.toUpperCase();
   }
 
   // Metódo de acesso SET a especie
@@ -33,7 +33,7 @@ public class Animal {
 
   // Metódo de acesso GET a raca
   public String getRaca() {
-    return raca;
+    return raca.toUpperCase();
   }
 
   // Metódo de acesso SET a raca
@@ -62,6 +62,6 @@ public class Animal {
 
   // Metódo de acesso GET ao id do proprietário gerado de forma dinâmica
   public String getIdAnimal() {
-    return id_animal;
+    return id_animal.toUpperCase();
   }
 }

@@ -6,7 +6,7 @@ public class Propretario {
 
   // Metódo de acesso GET ao nome do proprietário
   public String getNome() {
-    return nome;
+    return nome.toUpperCase();
   }
 
   // Metódo de acesso SET ao nome do proprietário
@@ -34,6 +34,6 @@ public class Propretario {
 
   // Metódo de acesso GET ao id do proprietário gerado de forma dinâmica
   public String getIdProprietario() {
-    return id_proprietario;
+    return id_proprietario.toUpperCase();
   }
 }
