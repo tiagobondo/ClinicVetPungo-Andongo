@@ -6,42 +6,6 @@ import java.util.ArrayList;
 import java.time.LocalDate;
 
 public class App {
-
-  // Função Registar proprietário Recebendo params(teclado, proprietarios)
-  public static void registarProprietario(Scanner teclado, ArrayList<Propretario> proprietarios) {
-
-    while (true) {
-      Propretario proprietario = new Propretario(); // Variavel auxiliar
-
-      System.out.print("Nome do proprietário: ");
-      String nome = teclado.nextLine();
-      proprietario.setNome(nome);
-
-      System.out.print("Numero de telefone: ");
-      int contacto = teclado.nextInt();
-      proprietario.setContacto(contacto);
-
-      // Gerando o Id do proprietário
-      proprietario.setId_proprietario();
-
-      // Adicionar todas as pessoas no ArrayList
-      proprietarios.add(proprietario);
-      break;
-    }
-
-    /*
-     * System.out.format("DADOS\n");
-     * for (Propretario propretario : proprietarios) {
-     * System.out.println(propretario.getNome());
-     * System.out.println(propretario.getContacto());
-     * System.out.println(propretario.getIdProprietario());
-     * }
-     */
-
-    // System.out.print("SIZE " + proprietarios.size());
-
-  }
-
   // Função Registar animal Recebendo param(teclado, animais)
   public static void registarAnimal(Scanner teclado, ArrayList<Animal> animais, int anoActual) {
     while (true) {
@@ -67,15 +31,41 @@ public class App {
       } else {
         animal.setAnoNasc(ano);
       }
+
+      teclado.nextLine();
+
       // Gerando id automaticamente
       animal.setId_animal();
+
+      System.out.print("Nome do proprietário: ");
+      String nomeProprietario = teclado.nextLine();
+      animal.setNomeProprietario(nomeProprietario);
+
+      System.out.print("Contacto: ");
+      int contactoProprietario = teclado.nextInt();
+      animal.setContacto(contactoProprietario);
+
+      // Gerando Id automaticamente do proprietario
+      animal.setId_proprietario();
 
       animais.add(animal);
       break;
     }
+
+    /*
+     * System.out.format("DADOS\n");
+     * for (Animal animal : animais) {
+     * System.out.println(animal.getNome());
+     * System.out.println(animal.getEspecie());
+     * System.out.println(animal.getRaca());
+     * System.out.println(animal.getIdAnimal());
+     * System.out.println(animal.getContacto());
+     * System.out.println(animal.getNomeProprietario());
+     * System.out.println(animal.getIdProprietario());}
+     */
   }
 
-  // Função Registar animal Recebendo param(teclado, animais)
+  // Função Registar visita Recebendo param(teclado, animais)
   public static void registarVisita(Scanner teclado, ArrayList<Visita> visitas) {
     while (true) {
       Visita visita = new Visita();// Variavel auxiliar
@@ -108,8 +98,6 @@ public class App {
   }
 
   public static void main(String[] args) {
-    // Declaração do arrayList proprietarios
-    ArrayList<Propretario> proprietarios = new ArrayList<Propretario>();
     // Declaração do arrayList animais
     ArrayList<Animal> animais = new ArrayList<Animal>();
     // Declaração do arrayList viiitas
@@ -127,14 +115,13 @@ public class App {
         // Opções de escolhas
         System.out.print("\n");
         System.out.println("SEJA BEM-VINDO À CLÍNICA VETERINÁRIA PUNGO-ANDONGO");
-        System.out.println("1 - Proprietário");
-        System.out.println("2 - Animal");
-        System.out.println("3 - Visita");
-        System.out.println("4 - Consultar dados");
-        System.out.println("5 - Guardar dados em ficheiro");
-        System.out.println("6 - Carregar dados do ficheiro");
-        System.out.println("7 - Sair");
-        System.out.print("\n");
+        System.out.println("1 - Registar Animal");
+        System.out.println("2 - Registar Visita");
+        System.out.println("3 - Consultar");// Historico de um animal, Animal por proprietario,
+        System.out.println("4 - Listar");// Proprietário, Animal, Listar animal por proprietario
+        System.out.println("5 - Ficheiros");// Guardar ficheiros, carregar ficheiros
+        System.out.println("6 - Sair");
+        System.out.print("\n");//
 
         System.out.print("Opção: ");
         op = teclado.nextInt();
@@ -142,23 +129,19 @@ public class App {
         switch (op) {
           case 1:
             teclado.nextLine();// Limpando o buffer do teclado
-            registarProprietario(teclado, proprietarios);
-            break;
-          case 2:
-            teclado.nextLine();// Limpando o buffer do teclado
             registarAnimal(teclado, animais, anoActual);
             break;
-          case 3:
+          case 2:
             teclado.nextLine();// Limapando o buffer do teclado
             registarVisita(teclado, visitas);
+            break;
+          case 3:
             break;
           case 4:
             break;
           case 5:
             break;
           case 6:
-            break;
-          case 7:
             estado = false;
             break;
           default:

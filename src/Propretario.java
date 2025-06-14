@@ -5,12 +5,12 @@ public class Propretario {
   public static int contador = 1;
 
   // Metódo de acesso GET ao nome do proprietário
-  public String getNome() {
+  public String getNomeProprietario() {
     return nome.toUpperCase();
   }
 
   // Metódo de acesso SET ao nome do proprietário
-  public void setNome(String nome) {
+  public void setNomeProprietario(String nome) {
     this.nome = nome;
   }
 

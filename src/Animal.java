@@ -1,6 +1,6 @@
 import java.time.LocalDate;
 
-public class Animal {
+public class Animal extends Propretario {
   private String nome;
   private String especie;
   private String raca;
