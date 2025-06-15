@@ -1,4 +1,4 @@
-public class Visita {
+public class Visita extends Animal {
   // Data
   private String tipo_visita; // Consulta, Vacinação, Banho
   private String observacao;

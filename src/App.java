@@ -6,34 +6,190 @@ import java.util.ArrayList;
 import java.time.LocalDate;
 
 public class App {
+  // Função historico do animal
+  public static void historicoAnimal(Scanner teclado, ArrayList<Animal> animais) {
+    String nomeAnimal;
+    boolean estado1 = true;
+    while (estado1) {
+      System.out.print("Nome do animal: ");
+      nomeAnimal = teclado.nextLine();
+      if (nomeAnimal.isEmpty()) {
+        System.out.println("");
+        System.out.print("Por favor informe o nome do animal!\n");
+        System.out.println("");
+      } else {
+        if (animais.size() == 0) {
+          System.out.println("");
+          System.out.println("Ainda não existe nenhum registo!");
+          System.out.println("");
+          estado1 = false;
+        } else {
+          System.out.println("______HISTÓRICO DE CONSULTA DO ANIMAL______");
+          for (Animal animal : animais) {
+            System.out.println("");
+            if (animal.getNome().equalsIgnoreCase(nomeAnimal)) {
+              System.out.println("ID_ANIMAL: " + animal.getIdAnimal());
+              System.out.println("NOME DO ANIMAL: " + animal.getNome());
+              System.out.println("ESPECÍE: " + animal.getEspecie());
+              System.out.println("IDADE: " + animal.getIdade());
+              System.out.println("RAÇA: " + animal.getRaca());
+              System.out.println("ID_PROPRIETÁRIO: " + animal.getIdProprietario());
+              System.out.println("NOME PROPRIETÁRIO: " + animal.getNomeProprietario());
+              System.out.println("CONTACTO: " + animal.getContacto());
+              System.out.println("");
+              estado1 = false;
+            } else {
+              // System.out.println("Animal não encontrado!\n");
+              estado1 = false;
+            }
+          }
+        }
+        /*
+         * for (Animal animal : animais) {
+         * System.out.println(animal.getNome());
+         * System.out.println(animal.getEspecie());
+         * System.out.println(animal.getRaca());
+         * System.out.println(animal.getIdAnimal());
+         * System.out.println(animal.getNomeProprietario());
+         * System.out.println(animal.getContacto());
+         */
+        /*
+         * System.out.println(visita.getRaca());
+         * System.out.println(visita.getIdAnimal());
+         * System.out.println(visita.getContacto());
+         * System.out.println(visita.getNomeProprietario());
+         * System.out.println(visita.getIdProprietario());}
+         */
+      }
+    }
+  }
+
+  // Função de consulta por proprietário
+  public static void consultaAnimalPorProprietario(Scanner teclado, ArrayList<Animal> animais) {
+    String nomeProprietario;
+    boolean estado2 = true;
+    while (estado2) {
+      System.out.print("Nome do proprietário: ");
+      nomeProprietario = teclado.nextLine();
+      if (nomeProprietario.isEmpty()) {
+        System.out.println("");
+        System.out.print("Por favor informe o nome do proprietário!\n");
+        System.out.println("");
+      } else {
+        if (animais.size() == 0) {
+          System.out.println("");
+          System.out.println("Não existe nenhum registo!");
+          System.out.println("");
+          estado2 = false;
+        } else {
+          System.out.println("______ANIMAIS POR PROPRIETÁRIO______");
+          for (Animal animal : animais) {
+            System.out.println("");
+            if (animal.getNomeProprietario().equalsIgnoreCase(nomeProprietario)) {
+              System.out.println("ID_ANIMAL: " + animal.getIdAnimal());
+              System.out.println("NOME DO ANIMAL: " + animal.getNome());
+              System.out.println("ESPECÍE: " + animal.getEspecie());
+              System.out.println("IDADE: " + animal.getIdade());
+              System.out.println("RAÇA: " + animal.getRaca());
+              System.out.println("ID_PROPRIETÁRIO: " + animal.getIdProprietario());
+              System.out.println("NOME PROPRIETÁRIO: " + animal.getNomeProprietario());
+              System.out.println("CONTACTO: " + animal.getContacto());
+              System.out.println("");
+              estado2 = false;
+            } else {
+              // System.out.println("Proprietário não encontrado!\n");
+              estado2 = false;
+            }
+          }
+        }
+      }
+    }
+  }
+
   // Função Registar animal Recebendo param(teclado, animais)
   public static void registarAnimal(Scanner teclado, ArrayList<Animal> animais, int anoActual) {
     while (true) {
       Animal animal = new Animal(); // Variavel auxiliar
 
-      System.out.print("Nome do animal: ");
-      String nome = teclado.nextLine();
-      animal.setNome(nome);
+      // Validação individualmente
+      while (true) {
+        System.out.print("Nome do animal: ");
+        String nome = teclado.nextLine();
 
-      System.out.print("Espécie: ");
-      String especie = teclado.nextLine();
-      animal.setEspecie(especie);
-
-      System.out.print("Raça: ");
-      String raca = teclado.nextLine();
-      animal.setRaca(raca);
-
-      System.out.print("Ano de nascimento do animal: ");
-      int ano = teclado.nextInt();
-      // Certificando que o cálculo da idade não seja superior a 5
-      if (ano < (anoActual - 5)) {
-        System.out.print("Ano inválido!");
-      } else {
-        animal.setAnoNasc(ano);
+        if (nome.isEmpty()) {
+          System.out.print("Nome não pode estar vazio!\n");
+        } else {
+          animal.setNome(nome);
+          break;
+        }
       }
 
-      teclado.nextLine();
+      // Simulando dados vindo dum banco de dados
+      String especiesAnimais[] = { "Canina", "Felina", "Aves", "Roedores", "Réptil", "Peixe", "Exótico" };
+      String racasAnimais[][] = {
+          { "Pastor alemão", "Labrador", "Pitbul", "Rafeiro", "Outro" },
+          { "Siâmes", "Persa", "Outro" },
+          { "Papagaio", "Arara", "Outro" },
+          { "Coelho anão", "Outro" },
+          { "Iguana Verde", "Gecko", "Outro" },
+          { "Betta", "Neon", "Outro" },
+          { "Cacatua", "Ferrent", "Outro" }
+      };
 
+      System.out.print("\n");
+      System.out.print("Escolha a especíe: \n");
+      for (int i = 0; i < especiesAnimais.length; i++) {
+        System.out.println((i + 1) + " - " + especiesAnimais[i]);
+      }
+
+      while (true) {
+        try {
+          int opcaoEspecie = teclado.nextInt();
+          if ((opcaoEspecie < 1) || (opcaoEspecie > especiesAnimais.length)) {
+            System.out.print("Opção inválida!\n");
+            teclado.nextLine();
+          } else {
+            animal.setEspecie(especiesAnimais[opcaoEspecie - 1]);
+            System.out.print("Escolha a raça: \n");
+            for (int c = 0; c < racasAnimais[opcaoEspecie - 1].length; c++) {
+              System.out.println((c + 1) + " - " + racasAnimais[opcaoEspecie - 1][c]);
+            }
+            int opcaoRaca = teclado.nextInt();
+            if ((opcaoRaca < 1) || (opcaoRaca > racasAnimais[opcaoEspecie - 1].length)) {
+              System.out.print("Opção inválida!\n");
+            } else {
+              animal.setRaca(racasAnimais[opcaoEspecie - 1][opcaoRaca - 1]);
+              break;
+            }
+          }
+
+        } catch (InputMismatchException e) {
+          System.out.print("Apenas numeros!\n");
+          teclado.nextLine();
+        }
+      }
+
+      while (true) {
+        System.out.print("Ano de nascimento do animal: ");
+        try {
+          int ano = teclado.nextInt();
+          if (ano < 0 || ano > anoActual || ano < 2000) {
+            System.out.print("Informe um ano válido!\n");
+          } else {
+            // Certificando que o cálculo da idade não seja superior a 5
+            if (ano < (anoActual - 5)) {
+              System.out.print("Informe um ano em que quando retornar a idade seja menor que 5 anos!\n");
+            } else {
+              animal.setAnoNasc(ano);
+              break;
+            }
+          }
+        } catch (InputMismatchException e) {
+          System.out.print("Apenas numero!\n");
+          teclado.nextLine();
+        }
+      }
+      teclado.nextLine();
       // Gerando id automaticamente
       animal.setId_animal();
 
@@ -66,13 +222,39 @@ public class App {
   }
 
   // Função Registar visita Recebendo param(teclado, animais)
-  public static void registarVisita(Scanner teclado, ArrayList<Visita> visitas) {
+  public static void registarVisita(Scanner teclado, ArrayList<Visita> visitas, ArrayList<Animal> animais) {
     while (true) {
       Visita visita = new Visita();// Variavel auxiliar
+      int n = 0, limit = 0;
 
       System.out.print("Tipo de  visita: ");
       String tipo_visita = teclado.nextLine();
       visita.setTipoVisita(tipo_visita);
+
+      System.out.println("O animal: ");
+      do {
+        for (Animal animal : animais) {
+          System.out.println(((n++) + 1) + " - " + animal.getNome());
+        }
+        // n++;
+        limit = ((n++) + 1);
+        break;
+      } while (true);
+
+      while (true) {
+        try {
+          int opcao = teclado.nextInt();
+          if (opcao < 0 || opcao > (limit - 1)) {
+            System.out.println("Opção inválida!");
+          } else {
+            visita.setNome(animais.get(opcao - 1).getNome());
+            break;
+          }
+        } catch (InputMismatchException e) {
+          System.out.print("Informe apenas numero!");
+          teclado.nextInt();
+        }
+      }
 
       System.out.print("Custo do serviço: ");
       Double custo_servico = teclado.nextDouble();
@@ -93,6 +275,49 @@ public class App {
 
       visitas.add(visita);
       break;
+
+    }
+    /*
+     * System.out.format("DADOS\n");
+     * for (Visita visita : visitas) {
+     * System.out.println(visita.getIdVisita());
+     * System.out.println(visita.getNome_veterinario());
+     * System.out.println(visita.getCusto_servico());
+     * System.out.println(visita.getIdVisita());
+     * System.out.println(visita.getNome());
+     * }
+     */
+  }
+
+  public static void consultas(Scanner teclado, ArrayList<Animal> animais) {
+    int opcao;
+    boolean estado = true;
+
+    while (estado) {
+      try {
+        System.out.print("1 - Histórico de um animal\n");
+        System.out.print("2 - Por proprietário\n");
+        System.out.print("3 - Voltar\n");
+        opcao = teclado.nextInt();
+        switch (opcao) {
+          case 1:
+            teclado.nextLine();
+            historicoAnimal(teclado, animais);
+            break;
+          case 2:
+            teclado.nextLine();
+            consultaAnimalPorProprietario(teclado, animais);
+            break;
+          case 3:
+            estado = false;
+            break;
+          default:
+            System.out.print("Opção inválida!\n");
+        }
+      } catch (InputMismatchException e) {
+        System.out.print("Apenas Numeros!\n");
+        teclado.nextLine();
+      }
     }
 
   }
@@ -133,9 +358,10 @@ public class App {
             break;
           case 2:
             teclado.nextLine();// Limapando o buffer do teclado
-            registarVisita(teclado, visitas);
+            registarVisita(teclado, visitas, animais);
             break;
           case 3:
+            consultas(teclado, animais);
             break;
           case 4:
             break;
