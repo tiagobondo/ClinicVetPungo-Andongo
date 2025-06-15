@@ -8,14 +8,14 @@ import java.time.LocalDate;
 public class App {
   // Função historico do animal
   public static void historicoAnimal(Scanner teclado, ArrayList<Animal> animais) {
-    String nomeAnimal;
+    String idAnimal;
     boolean estado1 = true;
     while (estado1) {
-      System.out.print("Nome do animal: ");
-      nomeAnimal = teclado.nextLine();
-      if (nomeAnimal.isEmpty()) {
+      System.out.print("ID do Animal: ");
+      idAnimal = teclado.nextLine();
+      if (idAnimal.isEmpty()) {
         System.out.println("");
-        System.out.print("Por favor informe o nome do animal!\n");
+        System.out.print("Por favor informe o ID do animal!\n");
         System.out.println("");
       } else {
         if (animais.size() == 0) {
@@ -27,8 +27,8 @@ public class App {
           System.out.println("______HISTÓRICO DE CONSULTA DO ANIMAL______");
           for (Animal animal : animais) {
             System.out.println("");
-            if (animal.getNome().equalsIgnoreCase(nomeAnimal)) {
-              System.out.println("ID_ANIMAL: " + animal.getIdAnimal());
+            if (animal.getIdAnimal().equalsIgnoreCase(idAnimal)) {
+              // System.out.println("ID_ANIMAL: " + animal.getIdAnimal());
               System.out.println("NOME DO ANIMAL: " + animal.getNome());
               System.out.println("ESPECÍE: " + animal.getEspecie());
               System.out.println("IDADE: " + animal.getIdade());
@@ -66,14 +66,14 @@ public class App {
 
   // Função de consulta por proprietário
   public static void consultaAnimalPorProprietario(Scanner teclado, ArrayList<Animal> animais) {
-    String nomeProprietario;
+    String idProprietario;
     boolean estado2 = true;
     while (estado2) {
-      System.out.print("Nome do proprietário: ");
-      nomeProprietario = teclado.nextLine();
-      if (nomeProprietario.isEmpty()) {
+      System.out.print("ID do proprietário: ");
+      idProprietario = teclado.nextLine();
+      if (idProprietario.isEmpty()) {
         System.out.println("");
-        System.out.print("Por favor informe o nome do proprietário!\n");
+        System.out.print("Por favor informe o ID do proprietário!\n");
         System.out.println("");
       } else {
         if (animais.size() == 0) {
@@ -85,7 +85,7 @@ public class App {
           System.out.println("______ANIMAIS POR PROPRIETÁRIO______");
           for (Animal animal : animais) {
             System.out.println("");
-            if (animal.getNomeProprietario().equalsIgnoreCase(nomeProprietario)) {
+            if (animal.getIdProprietario().equalsIgnoreCase(idProprietario)) {
               System.out.println("ID_ANIMAL: " + animal.getIdAnimal());
               System.out.println("NOME DO ANIMAL: " + animal.getNome());
               System.out.println("ESPECÍE: " + animal.getEspecie());
