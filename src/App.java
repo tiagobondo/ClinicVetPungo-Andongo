@@ -8,14 +8,14 @@ import java.time.LocalDate;
 public class App {
   // Função historico do animal
   public static void historicoAnimal(Scanner teclado, ArrayList<Animal> animais) {
-    String idAnimal;
+    String idAnimalOUNOME;
     boolean estado1 = true;
     while (estado1) {
-      System.out.print("ID do Animal: ");
-      idAnimal = teclado.nextLine();
-      if (idAnimal.isEmpty()) {
+      System.out.print("ID do Animal e/ou Nome: ");
+      idAnimalOUNOME = teclado.nextLine();
+      if (idAnimalOUNOME.isEmpty()) {
         System.out.println("");
-        System.out.print("Por favor informe o ID do animal!\n");
+        System.out.print("Por favor informe o ID do animal e/ou Nome!\n");
         System.out.println("");
       } else {
         if (animais.size() == 0) {
@@ -27,7 +27,8 @@ public class App {
           System.out.println("______HISTÓRICO DE CONSULTA DO ANIMAL______");
           for (Animal animal : animais) {
             System.out.println("");
-            if (animal.getIdAnimal().equalsIgnoreCase(idAnimal)) {
+            if (animal.getIdAnimal().equalsIgnoreCase(idAnimalOUNOME)
+                || animal.getNome().equalsIgnoreCase(idAnimalOUNOME)) {
               System.out.println("ID_ANIMAL: " + animal.getIdAnimal());
               System.out.println("NOME DO ANIMAL: " + animal.getNome());
               System.out.println("ESPECÍE: " + animal.getEspecie());
@@ -66,14 +67,14 @@ public class App {
 
   // Função de consulta por proprietário
   public static void consultaAnimalPorProprietario(Scanner teclado, ArrayList<Animal> animais) {
-    String idProprietario;
+    String idProprietarioOUNOME;
     boolean estado2 = true;
     while (estado2) {
-      System.out.print("ID do proprietário: ");
-      idProprietario = teclado.nextLine();
-      if (idProprietario.isEmpty()) {
+      System.out.print("ID do proprietário e/ou Nome: ");
+      idProprietarioOUNOME = teclado.nextLine();
+      if (idProprietarioOUNOME.isEmpty()) {
         System.out.println("");
-        System.out.print("Por favor informe o ID do proprietário!\n");
+        System.out.print("Por favor informe o ID do proprietário e/ou Nome!\n");
         System.out.println("");
       } else {
         if (animais.size() == 0) {
@@ -85,7 +86,8 @@ public class App {
           System.out.println("______ANIMAIS POR PROPRIETÁRIO______");
           for (Animal animal : animais) {
             System.out.println("");
-            if (animal.getIdProprietario().equalsIgnoreCase(idProprietario)) {
+            if (animal.getIdProprietario().equalsIgnoreCase(idProprietarioOUNOME)
+                || animal.getNomeProprietario().equalsIgnoreCase(idProprietarioOUNOME)) {
               System.out.println("ID_PROPRIETÁRIO: " + animal.getIdProprietario());
               System.out.println("NOME PROPRIETÁRIO: " + animal.getNomeProprietario());
               System.out.println("CONTACTO: " + animal.getContacto());
@@ -179,7 +181,43 @@ public class App {
 
   // Função de histórico de visita por animal
   public static void historicoVisitaPorAnimal(Scanner teclado, ArrayList<Visita> visitas) {
-
+    String nomeAnimalOUID;
+    boolean estado2 = true;
+    while (estado2) {
+      System.out.print("Nome do animal e/ou ID de visita: ");
+      nomeAnimalOUID = teclado.nextLine();
+      if (nomeAnimalOUID.isEmpty()) {
+        System.out.println("");
+        System.out.print("Por favor informe o nome do animal!\n");
+        System.out.println("");
+      } else {
+        if (visitas.size() == 0) {
+          System.out.println("");
+          System.out.println("Não existe nenhum histórico!");
+          System.out.println("");
+          estado2 = false;
+        } else {
+          System.out.println("______HISTÓRICO ANIMAL______");
+          for (Visita visita : visitas) {
+            System.out.println("");
+            if (visita.getNome().equalsIgnoreCase(nomeAnimalOUID)
+                || visita.getIdVisita().equalsIgnoreCase(nomeAnimalOUID)) {
+              System.out.println("ID VISITA: " + visita.getIdVisita());
+              System.out.println("NOME DO ANIMAL: " + visita.getNome());
+              System.out.println("TIPO DE VISITA: " + visita.getTipoVisita());
+              System.out.println("CUSTO (AOA, USD, EUR): " + visita.getCusto_servico());
+              System.out.println("NOME DO VETERINÁRIO: " + visita.getNome_veterinario());
+              System.out.println("OBSERVAÇÃO: " + visita.getObservacao());
+              System.out.println("");
+              estado2 = false;
+            } else {
+              // System.out.println("Proprietário não encontrado!\n");
+              estado2 = false;
+            }
+          }
+        }
+      }
+    }
   }
 
   // Função Registar animal Recebendo param(teclado, animais)
@@ -302,16 +340,40 @@ public class App {
     while (true) {
       Visita visita = new Visita();// Variavel auxiliar
       int n = 0, limit = 0;
+      String tipoVisitas[] = { "Consulta", "Vacinação", "Higiene(Banho)" };
+      boolean conditionOption = true;
 
       if (animais.size() == 0) {
         System.out.println("Não existe nenhum animal cadastrado!");
         break;
       } else {
-        System.out.print("Tipo de  visita: ");
-        String tipo_visita = teclado.nextLine();
-        visita.setTipoVisita(tipo_visita);
 
-        System.out.println("O animal: ");
+        System.out.print("\n");
+        System.out.print("Escolha o tipo de  visita: \n");
+        for (int i = 0; i < tipoVisitas.length; i++) {
+          System.out.println((i + 1) + " - " + tipoVisitas[i]);
+        }
+
+        while (conditionOption) {
+          System.out.print(": ");
+          try {
+            int opcaoTipoVisita = teclado.nextInt();
+            if ((opcaoTipoVisita < 1) || (opcaoTipoVisita > tipoVisitas.length)) {
+              System.out.print("Opção inválida!\n");
+              teclado.nextLine();
+            } else {
+              visita.setTipoVisita(tipoVisitas[opcaoTipoVisita - 1]);
+              break;
+            }
+
+          } catch (Exception e) {
+            System.out.print("Escolha apenas número!");
+            teclado.nextLine();
+          }
+        }
+
+        System.out.println("Escolha o animal");
+        System.out.print(": ");
         do {
           for (Animal animal : animais) {
             System.out.println(((n++) + 1) + " - " + animal.getNome());
@@ -336,19 +398,46 @@ public class App {
           }
         }
 
-        System.out.print("Custo do serviço: ");
-        Double custo_servico = teclado.nextDouble();
-        visita.setCusto_servico(custo_servico);
+        while (true) {
+          System.out.print("Custo do serviço: ");
+          try {
+            Double custo_servico = teclado.nextDouble();
+            if (custo_servico <= 0) {
+              System.out.println("Informe um valor aceitável!");
+            } else {
+              visita.setCusto_servico(custo_servico);
+              break;
+            }
+          } catch (InputMismatchException e) {
+            System.out.println("Custo inválido!");
+            teclado.nextLine();
+          }
+        }
 
         teclado.nextLine();// Limpando o buffer do teclado
 
         System.out.print("Nome do  veterinario: ");
-        String nome_veterinario = teclado.nextLine();
-        visita.setNome_veterinario(nome_veterinario);
+        while (true) {
+          String nome_veterinario = teclado.nextLine();
+          if (nome_veterinario.isEmpty()) {
+            System.out.println("Informe o nome do  veterinario: ");
+          } else {
+            visita.setNome_veterinario(nome_veterinario);
+            break;
+          }
+
+        }
 
         System.out.print("Observação: ");
-        String observacao = teclado.nextLine();
-        visita.setObservacao(observacao);
+        while (true) {
+          String observacao = teclado.nextLine();
+          if (observacao.isEmpty()) {
+            System.out.print("Observação por favor: ");
+          } else {
+            visita.setObservacao(observacao);
+            break;
+          }
+        }
 
         // Gerando id automaticamente
         visita.setIdVisita();
