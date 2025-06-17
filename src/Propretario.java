@@ -27,7 +27,7 @@ public class Propretario {
   // Metódo de acesso SET ao id do proprietário
   public void setId_proprietario() {
     String id;
-    id = String.format("pro%03dao\n", contador);
+    id = String.format("pro%03d%s", contador, "dao");
     this.id_proprietario = id;
     contador++;
   }

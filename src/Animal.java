@@ -55,7 +55,7 @@ public class Animal extends Propretario {
   // Metódo de acesso SET ao id do proprietário
   public void setId_animal() {
     String id;
-    id = String.format("cli%03dao\n", contador);
+    id = String.format("cli%03d%s", contador, "dao");
     this.id_animal = id;
     contador++;
   }

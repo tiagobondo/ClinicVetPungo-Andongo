@@ -86,14 +86,14 @@ public class App {
           for (Animal animal : animais) {
             System.out.println("");
             if (animal.getIdProprietario().equalsIgnoreCase(idProprietario)) {
+              System.out.println("ID_PROPRIETÁRIO: " + animal.getIdProprietario());
+              System.out.println("NOME PROPRIETÁRIO: " + animal.getNomeProprietario());
+              System.out.println("CONTACTO: " + animal.getContacto());
               System.out.println("ID_ANIMAL: " + animal.getIdAnimal());
               System.out.println("NOME DO ANIMAL: " + animal.getNome());
               System.out.println("ESPECÍE: " + animal.getEspecie());
               System.out.println("IDADE: " + animal.getIdade());
               System.out.println("RAÇA: " + animal.getRaca());
-              System.out.println("ID_PROPRIETÁRIO: " + animal.getIdProprietario());
-              System.out.println("NOME PROPRIETÁRIO: " + animal.getNomeProprietario());
-              System.out.println("CONTACTO: " + animal.getContacto());
               System.out.println("");
               estado2 = false;
             } else {
@@ -127,7 +127,7 @@ public class App {
           System.out.println("______DADOS DO PROPRIETÁRIO______");
           for (Animal animal : animais) { // Alterar a busca por id do proprietario
             System.out.println("");
-            if (animal.getNomeProprietario().equalsIgnoreCase(idProprietario)) {
+            if (animal.getIdProprietario().equalsIgnoreCase(idProprietario)) {
               System.out.println("ID_PROPRIETÁRIO: " + animal.getIdProprietario());
               System.out.println("NOME PROPRIETÁRIO: " + animal.getNomeProprietario());
               System.out.println("CONTACTO: " + animal.getContacto());

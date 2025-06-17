@@ -49,7 +49,7 @@ public class Visita extends Animal {
   // Metódo de acesso SET ao id da visita
   public void setIdVisita() {
     String id;
-    id = String.format("visi%03d\n", contador);
+    id = String.format("visi%03d%s", contador, "dao");
     this.id_visita = id;
     contador++;
   }
