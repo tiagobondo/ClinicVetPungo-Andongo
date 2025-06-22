@@ -1,0 +1,7 @@
+DADOS DO ANIMAL
+Nome do animal: Bob
+Espécie: Canina
+Raça: Pastor alemão
+Idade: 2
+Nome do proprietário: Tiago Pedro Menenga Bondo
+Contacto do proprietário: 932225092
