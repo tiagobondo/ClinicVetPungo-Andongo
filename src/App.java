@@ -11,6 +11,78 @@ import java.util.ArrayList;
 import java.time.LocalDate;
 
 public class App {
+
+  // Função Carregar Arquivo Animal
+  public static void carregarArquivosAnimal(Scanner teclado) {
+    try {
+      File ficheiroAnimal = new File("animal.txt");
+      teclado = new Scanner(ficheiroAnimal);
+
+      System.out.print("\n");
+      while (teclado.hasNextLine()) {
+        String linha = teclado.nextLine();
+        System.out.println(linha);
+      }
+      System.out.print("\n");
+      teclado.close();
+    } catch (FileNotFoundException e) {
+      System.out.println("Fincheiro nao encontrado!");
+      e.printStackTrace();
+    }
+  }
+
+  // Função Carregar Arquivo Visita
+  public static void carregarArquivosVisita(Scanner teclado) {
+    try {
+      File ficheiroVisita = new File("visita.txt");
+      teclado = new Scanner(ficheiroVisita);
+
+      System.out.print("\n");
+      while (teclado.hasNextLine()) {
+        String linha = teclado.nextLine();
+        System.out.println(linha);
+      }
+      System.out.print("\n");
+      teclado.close();
+    } catch (FileNotFoundException e) {
+      System.out.println("Fincheiro nao encontrado!");
+      e.printStackTrace();
+    }
+  }
+
+  // Funcao para carregar os arquivos
+  public static void carregarDadosArquivos(Scanner teclado) {
+    int opcao;
+    boolean estado = true;
+
+    while (estado) {
+      try {
+        System.out.print("1 - Dados do Arquivo Animal\n");
+        System.out.print("2 - Dados do Arquivo Visita\n");
+        System.out.print("3 - Voltar\n");
+        opcao = teclado.nextInt();
+        switch (opcao) {
+          case 1:
+            teclado.nextLine();
+            carregarArquivosAnimal(teclado);
+            break;
+          case 2:
+            teclado.nextLine();
+            carregarArquivosVisita(teclado);
+            break;
+          case 3:
+            estado = false;
+            break;
+          default:
+            System.out.print("Opção inválida!\n");
+        }
+      } catch (InputMismatchException e) {
+        System.out.print("Apenas Numeros!\n");
+        teclado.nextLine();
+      }
+    }
+  }
+
   // Função historico do animal
   public static void historicoAnimal(Scanner teclado, ArrayList<Animal> animais) {
     String idAnimalOUNOME;
@@ -606,6 +678,8 @@ public class App {
             listar(teclado, animais, visitas);
             break;
           case 5:
+            teclado.nextLine();
+            carregarDadosArquivos(teclado);
             break;
           case 6:
             estado = false;

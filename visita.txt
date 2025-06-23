@@ -1,7 +1,0 @@
-
- DADOS DA VISITA
-Tipo de visita: Consulta
-Animal: LION
-Custo: 200.0
-Nome do veterinário: Paulo Miguel
-Observação: Good
