@@ -1,0 +1,14 @@
+
+ DADOS DA VISITA
+Tipo de visita: Consulta
+Animal: BOB
+Custo: 7000.0
+Nome do veterinário: Paulo Kinanga
+Observação: Vacinacao
+
+ DADOS DA VISITA
+Tipo de visita: Higiene(Banho)
+Animal: BOB
+Custo: 15000.0
+Nome do veterinário: Miguel alberto
+Observação: Banho
