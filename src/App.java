@@ -226,131 +226,128 @@ public class App {
   }
 
   // Função Registar animal Recebendo param(teclado, animais)
-  public static void registarAnimal(Scanner teclado, ArrayList<Animal> animais, int anoActual) {
+  public static void registarAnimal(Scanner teclado, ArrayList<Animal> animais, int anoActual, FileWriter escritor)
+      throws IOException {
     while (true) {
-      try {
-        FileWriter escritor = new FileWriter("animal.txt", true);
-        Animal animal = new Animal(); // Variavel auxiliar
+      Animal animal = new Animal(); // Variavel auxiliar
 
-        // Validação individualmente
-        while (true) {
-          System.out.print("Nome do animal: ");
-          String nome = teclado.nextLine();
+      // Validação individualmente
+      while (true) {
+        System.out.print("Nome do animal: ");
+        String nome = teclado.nextLine();
 
-          if (nome.isEmpty()) {
-            System.out.print("Nome não pode estar vazio!\n");
-          } else {
-            animal.setNome(nome);
-            // escrevendo os dados do animal no arquivo de texto
-            escritor.write("DADOS DO ANIMAL" + "\n");
-            escritor.write("Nome do animal: " + nome + "\n");
-            break;
-          }
+        if (nome.isEmpty()) {
+          System.out.print("Nome não pode estar vazio!\n");
+        } else {
+          animal.setNome(nome);
+          // escrevendo os dados do animal no arquivo de texto
+          escritor.write("\n DADOS DO ANIMAL\n");
+          escritor.write("Nome do animal: " + nome + "\n");
+          break;
         }
-
-        // Simulando dados vindo dum banco de dados
-        String especiesAnimais[] = { "Canina", "Felina", "Aves", "Roedores", "Réptil", "Peixe", "Exótico" };
-        String racasAnimais[][] = {
-            { "Pastor alemão", "Labrador", "Pitbul", "Rafeiro", "Outro" },
-            { "Siâmes", "Persa", "Outro" },
-            { "Papagaio", "Arara", "Outro" },
-            { "Coelho anão", "Outro" },
-            { "Iguana Verde", "Gecko", "Outro" },
-            { "Betta", "Neon", "Outro" },
-            { "Cacatua", "Ferrent", "Outro" }
-        };
-
-        System.out.print("\n");
-        System.out.print("Escolha a especíe: \n");
-        for (int i = 0; i < especiesAnimais.length; i++) {
-          System.out.println((i + 1) + " - " + especiesAnimais[i]);
-        }
-
-        while (true) {
-          try {
-            int opcaoEspecie = teclado.nextInt();
-            if ((opcaoEspecie < 1) || (opcaoEspecie > especiesAnimais.length)) {
-              System.out.print("Opção inválida!\n");
-              teclado.nextLine();
-            } else {
-              animal.setEspecie(especiesAnimais[opcaoEspecie - 1]);
-              // escrevendo os dados do animal no arquivo de texto
-              escritor.write("Espécie: " + especiesAnimais[opcaoEspecie - 1] + "\n");
-              System.out.print("Escolha a raça: \n");
-              for (int c = 0; c < racasAnimais[opcaoEspecie - 1].length; c++) {
-                System.out.println((c + 1) + " - " + racasAnimais[opcaoEspecie - 1][c]);
-              }
-              int opcaoRaca = teclado.nextInt();
-              if ((opcaoRaca < 1) || (opcaoRaca > racasAnimais[opcaoEspecie - 1].length)) {
-                System.out.print("Opção inválida!\n");
-              } else {
-                animal.setRaca(racasAnimais[opcaoEspecie - 1][opcaoRaca - 1]);
-                // escrevendo os dados do animal no arquivo de texto
-                escritor.write("Raça: " + racasAnimais[opcaoEspecie - 1][opcaoRaca - 1] + "\n");
-                break;
-              }
-            }
-
-          } catch (InputMismatchException e) {
-            System.out.print("Apenas numeros!\n");
-            teclado.nextLine();
-          }
-        }
-
-        while (true) {
-          System.out.print("Ano de nascimento do animal: ");
-          try {
-            int ano = teclado.nextInt();
-            if (ano < 0 || ano > anoActual || ano < 2000) {
-              System.out.print("Informe um ano válido!\n");
-            } else {
-              // Certificando que o cálculo da idade não seja superior a 5
-              if (ano < (anoActual - 5)) {
-                System.out.print("Informe um ano em que quando retornar a idade seja menor que 5 anos!\n");
-              } else {
-                animal.setAnoNasc(ano);
-                // escrevendo os dados do animal no arquivo de texto
-                escritor.write("Idade: " + (anoActual - ano) + "\n");
-                break;
-              }
-            }
-          } catch (InputMismatchException e) {
-            System.out.print("Apenas numero!\n");
-            teclado.nextLine();
-          }
-        }
-        teclado.nextLine();
-        // Gerando id automaticamente
-        animal.setId_animal();
-
-        System.out.print("Nome do proprietário: ");
-        String nomeProprietario = teclado.nextLine();
-        animal.setNomeProprietario(nomeProprietario);
-        // escrevendo os dados do animal no arquivo de texto
-        escritor.write("Nome do proprietário: " + nomeProprietario + "\n");
-
-        System.out.print("Contacto: ");
-        int contactoProprietario = teclado.nextInt();
-        animal.setContacto(contactoProprietario);
-        // escrevendo os dados do animal no arquivo de texto
-        escritor.write("Contacto do proprietário: " + contactoProprietario + "\n");
-
-        // Gerando Id automaticamente do proprietario
-        animal.setId_proprietario();
-        animais.add(animal);
-
-        escritor.close();
-        break;
-      } catch (IOException e) {
-        System.out.println("Erro ao tentar escrever em fincheiros!");
-        e.printStackTrace();
       }
+
+      // Simulando dados vindo dum banco de dados
+      String especiesAnimais[] = { "Canina", "Felina", "Aves", "Roedores", "Réptil", "Peixe", "Exótico" };
+      String racasAnimais[][] = {
+          { "Pastor alemão", "Labrador", "Pitbul", "Rafeiro", "Outro" },
+          { "Siâmes", "Persa", "Outro" },
+          { "Papagaio", "Arara", "Outro" },
+          { "Coelho anão", "Outro" },
+          { "Iguana Verde", "Gecko", "Outro" },
+          { "Betta", "Neon", "Outro" },
+          { "Cacatua", "Ferrent", "Outro" }
+      };
+
+      System.out.print("\n");
+      System.out.print("Escolha a especíe: \n");
+      for (int i = 0; i < especiesAnimais.length; i++) {
+        System.out.println((i + 1) + " - " + especiesAnimais[i]);
+      }
+
+      while (true) {
+        try {
+          int opcaoEspecie = teclado.nextInt();
+          if ((opcaoEspecie < 1) || (opcaoEspecie > especiesAnimais.length)) {
+            System.out.print("Opção inválida!\n");
+            teclado.nextLine();
+          } else {
+            animal.setEspecie(especiesAnimais[opcaoEspecie - 1]);
+            // escrevendo os dados do animal no arquivo de texto
+            escritor.write("Espécie: " + especiesAnimais[opcaoEspecie - 1] + "\n");
+            System.out.print("Escolha a raça: \n");
+            for (int c = 0; c < racasAnimais[opcaoEspecie - 1].length; c++) {
+              System.out.println((c + 1) + " - " + racasAnimais[opcaoEspecie - 1][c]);
+            }
+            int opcaoRaca = teclado.nextInt();
+            if ((opcaoRaca < 1) || (opcaoRaca > racasAnimais[opcaoEspecie - 1].length)) {
+              System.out.print("Opção inválida!\n");
+            } else {
+              animal.setRaca(racasAnimais[opcaoEspecie - 1][opcaoRaca - 1]);
+              // escrevendo os dados do animal no arquivo de texto
+              escritor.write("Raça: " + racasAnimais[opcaoEspecie - 1][opcaoRaca - 1] + "\n");
+              break;
+            }
+          }
+
+        } catch (InputMismatchException e) {
+          System.out.print("Apenas numeros!\n");
+          teclado.nextLine();
+        }
+      }
+
+      while (true) {
+        System.out.print("Ano de nascimento do animal: ");
+        try {
+          int ano = teclado.nextInt();
+          if (ano < 0 || ano > anoActual || ano < 2000) {
+            System.out.print("Informe um ano válido!\n");
+          } else {
+            // Certificando que o cálculo da idade não seja superior a 5
+            if (ano < (anoActual - 5)) {
+              System.out.print("Informe um ano em que quando retornar a idade seja menor que 5 anos!\n");
+            } else {
+              animal.setAnoNasc(ano);
+              // escrevendo os dados do animal no arquivo de texto
+              escritor.write("Idade: " + (anoActual - ano) + "\n");
+              break;
+            }
+          }
+        } catch (InputMismatchException e) {
+          System.out.print("Apenas numero!\n");
+          teclado.nextLine();
+        }
+      }
+      teclado.nextLine();
+      // Gerando id automaticamente
+      animal.setId_animal();
+
+      System.out.print("Nome do proprietário: ");
+      String nomeProprietario = teclado.nextLine();
+      animal.setNomeProprietario(nomeProprietario);
+      // escrevendo os dados do animal no arquivo de texto
+      escritor.write("Nome do proprietário: " + nomeProprietario + "\n");
+
+      System.out.print("Contacto: ");
+      int contactoProprietario = teclado.nextInt();
+      animal.setContacto(contactoProprietario);
+      // escrevendo os dados do animal no arquivo de texto
+      escritor.write("Contacto do proprietário: " + contactoProprietario + "\n");
+
+      // Gerando Id automaticamente do proprietario
+      animal.setId_proprietario();
+      animais.add(animal);
+
+      escritor.close();
+      break;
     }
   }
 
   // Função Registar visita Recebendo param(teclado, animais)
-  public static void registarVisita(Scanner teclado, ArrayList<Visita> visitas, ArrayList<Animal> animais) {
+  public static void registarVisita(Scanner teclado, ArrayList<Visita> visitas, ArrayList<Animal> animais,
+      FileWriter escritor2) throws IOException {
     while (true) {
+
       Visita visita = new Visita();// Variavel auxiliar
       int n = 0, limit = 0;
       String tipoVisitas[] = { "Consulta", "Vacinação", "Higiene(Banho)" };
@@ -376,6 +373,9 @@ public class App {
               teclado.nextLine();
             } else {
               visita.setTipoVisita(tipoVisitas[opcaoTipoVisita - 1]);
+              // escrevendo os dados da visita no arquivo de texto
+              escritor2.write("\n DADOS DA VISITA\n");
+              escritor2.write("Tipo de visita: " + tipoVisitas[opcaoTipoVisita - 1] + "\n");
               break;
             }
 
@@ -403,6 +403,7 @@ public class App {
               System.out.println("Opção inválida!");
             } else {
               visita.setNome(animais.get(opcao - 1).getNome());
+              escritor2.write("Animal: " + animais.get(opcao - 1).getNome() + "\n");
               break;
             }
           } catch (InputMismatchException e) {
@@ -419,6 +420,7 @@ public class App {
               System.out.println("Informe um valor aceitável!");
             } else {
               visita.setCusto_servico(custo_servico);
+              escritor2.write("Custo: " + custo_servico + "\n");
               break;
             }
           } catch (InputMismatchException e) {
@@ -436,9 +438,9 @@ public class App {
             System.out.println("Informe o nome do  veterinario: ");
           } else {
             visita.setNome_veterinario(nome_veterinario);
+            escritor2.write("Nome do veterinário: " + nome_veterinario + "\n");
             break;
           }
-
         }
 
         System.out.print("Observação: ");
@@ -448,6 +450,7 @@ public class App {
             System.out.print("Observação por favor: ");
           } else {
             visita.setObservacao(observacao);
+            escritor2.write("Observação: " + observacao + "\n");
             break;
           }
         }
@@ -456,6 +459,7 @@ public class App {
         visita.setIdVisita();
 
         visitas.add(visita);
+        escritor2.close();
         break;
 
       }
@@ -579,11 +583,21 @@ public class App {
         switch (op) {
           case 1:
             teclado.nextLine();// Limpando o buffer do teclado
-            registarAnimal(teclado, animais, anoActual);
+            try {
+              FileWriter escritor = new FileWriter("animal.txt", true);
+              registarAnimal(teclado, animais, anoActual, escritor);
+            } catch (IOException e) {
+              e.printStackTrace();
+            }
             break;
           case 2:
             teclado.nextLine();// Limapando o buffer do teclado
-            registarVisita(teclado, visitas, animais);
+            try {
+              FileWriter escritor2 = new FileWriter("visita.txt", true);
+              registarVisita(teclado, visitas, animais, escritor2);
+            } catch (IOException e) {
+              e.printStackTrace();
+            }
             break;
           case 3:
             consultas(teclado, animais);
