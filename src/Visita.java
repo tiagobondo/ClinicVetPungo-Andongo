@@ -6,6 +6,7 @@ public class Visita extends Animal {
   private String nome_veterinario;
   private String id_visita;
   public static int contador = 1;
+  private int qntyVisita = 0;
 
   public String getTipoVisita() {
     return tipo_visita.toUpperCase();
@@ -57,6 +58,16 @@ public class Visita extends Animal {
   // Metódo de acesso GET ao id da visita gerado de forma dinâmica
   public String getIdVisita() {
     return id_visita.toUpperCase();
+  }
+
+  // Metódo de acesso GET
+  public int getQntyVisita() {
+    return qntyVisita;
+  }
+
+  // Metódo de acesso SET
+  public void setQntyVisita(int qntyVisita) {
+    this.qntyVisita = qntyVisita;
   }
 
 }
