@@ -313,7 +313,7 @@ public class App {
         } else {
           animal.setNome(nome);
           // escrevendo os dados do animal no arquivo de texto
-          escritor.write("\n DADOS DO ANIMAL\n");
+          escritor.write("DADOS DO ANIMAL\n");
           escritor.write("Nome do animal: " + nome + "\n");
           break;
         }
@@ -393,6 +393,8 @@ public class App {
       teclado.nextLine();
       // Gerando id automaticamente
       animal.setId_animal();
+
+      escritor.write("PROPRIETÁRIO\n");
 
       System.out.print("Nome do proprietário: ");
       String nomeProprietario = teclado.nextLine();
