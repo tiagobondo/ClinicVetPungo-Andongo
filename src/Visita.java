@@ -66,8 +66,8 @@ public class Visita extends Animal {
   }
 
   // Metódo de acesso SET
-  public void setQntyVisita(int qntyVisita) {
-    this.qntyVisita = qntyVisita;
+  public void setQntyVisita() {
+    this.qntyVisita++;
   }
 
 }

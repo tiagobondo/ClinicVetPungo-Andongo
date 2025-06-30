@@ -285,6 +285,7 @@ public class App {
               System.out.println("CUSTO (AOA, USD, EUR): " + visita.getCusto_servico());
               System.out.println("NOME DO VETERINÁRIO: " + visita.getNome_veterinario());
               System.out.println("OBSERVAÇÃO: " + visita.getObservacao());
+              System.out.println("QUANTIDADE DE VISITA: " + visita.getQntyVisita());
               System.out.println("");
               estado2 = false;
             } else {
@@ -531,6 +532,10 @@ public class App {
 
         // Gerando id automaticamente
         visita.setIdVisita();
+
+        //
+        visita.setQntyVisita();
+        // escritor2.write();
 
         visitas.add(visita);
         escritor2.close();

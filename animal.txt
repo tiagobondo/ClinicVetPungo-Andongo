@@ -1,9 +1,0 @@
-
- DADOS DO ANIMAL
-Nome do animal: Strong
-Espécie: Canina
-Raça: Pastor alemão
-Idade: 0
-PROPRIETÁRIO
-Nome do proprietário: Ronaldo Figueiredo
-Contacto do proprietário: 932225092
