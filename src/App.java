@@ -655,12 +655,12 @@ public class App {
         // Opções de escolhas
         System.out.print("\n");
         System.out.println("SEJA BEM-VINDO À CLÍNICA VETERINÁRIA PUNGO-ANDONGO");
-        System.out.println("1 - Registar Animal");
-        System.out.println("2 - Registar Visita");
-        System.out.println("3 - Consultar");// Historico de um animal, Animal por proprietario,
-        System.out.println("4 - Listar");// Proprietário, Animal, Listar animal por proprietario
+        System.out.println("1 - Registar Animal"); // Registar Animal
+        System.out.println("2 - Registar Visita"); // Registar Visitas
+        System.out.println("3 - Consultar");// Marcação de consulta
+        System.out.println("4 - Listar");// Listagem dos dados
         System.out.println("5 - Ficheiros");// Guardar ficheiros, carregar ficheiros
-        System.out.println("6 - Sair");
+        System.out.println("6 - Sair"); // Sair do sistema
         System.out.print("\n");//
 
         System.out.print("Opção: ");

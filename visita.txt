@@ -1,0 +1,14 @@
+
+ DADOS DA VISITA
+Tipo de visita: Consulta
+Animal: TOM
+Custo: 200000.0
+Nome do veterinário: Paulo Miguel
+Observação: Consulta apenas
+
+ DADOS DA VISITA
+Tipo de visita: Higiene(Banho)
+Animal: TOM
+Custo: 200.0
+Nome do veterinário: Paulo
+Observação: Banho
