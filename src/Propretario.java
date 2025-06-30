@@ -1,6 +1,6 @@
 public class Propretario {
   private String nome;
-  private int contacto;
+  private String contacto;
   private String id_proprietario;
   public static int contador = 1;
 
@@ -15,12 +15,12 @@ public class Propretario {
   }
 
   // Metódo de acesso GET ao contacto do proprietário
-  public int getContacto() {
+  public String getContacto() {
     return contacto;
   }
 
   // Metódo de acesso SET ao contacto do proprietário
-  public void setContacto(int contacto) {
+  public void setContacto(String contacto) {
     this.contacto = contacto;
   }
 

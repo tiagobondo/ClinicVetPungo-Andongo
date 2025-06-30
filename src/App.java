@@ -403,12 +403,19 @@ public class App {
       // escrevendo os dados do animal no arquivo de texto
       escritor.write("Nome do proprietário: " + nomeProprietario + "\n");
 
-      System.out.print("Contacto: ");
-      int contactoProprietario = teclado.nextInt();
-      animal.setContacto(contactoProprietario);
-      // escrevendo os dados do animal no arquivo de texto
-      escritor.write("Contacto do proprietário: " + contactoProprietario + "\n");
+      while (true) {
+        System.out.print("contacto: ");
+        String contactoProprietario = teclado.nextLine();
 
+        if (contactoProprietario.matches("9\\d{8}")) {
+          animal.setContacto(contactoProprietario);
+          // escrevendo os dados do animal no arquivo de texto
+          escritor.write("Contacto do proprietário: " + contactoProprietario + "\n");
+          break;
+        } else {
+          System.out.println("Número inválido, tente novamente!");
+        }
+      }
       // Gerando Id automaticamente do proprietario
       animal.setId_proprietario();
       animais.add(animal);
